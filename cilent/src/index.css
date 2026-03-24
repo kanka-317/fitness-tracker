@@ -1,0 +1,1750 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+*{
+font-family: "Outfit", sans-serif;
+}
+
+body{
+  @apply bg-slate-950 transition-colors duration-200;
+}
+
+.light body {
+  @apply bg-slate-100 text-slate-900;
+}
+/* Shared Page Styles */
+.page-container {
+  @apply min-h-screen bg-slate-50 dark:bg-slate-950 pb-24 transition-colors duration-200;
+}
+
+.page-header {
+  @apply bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 p-6 pt-12 transition-colors duration-200;
+}
+
+.layout-container {
+  @apply min-h-screen lg:max-h-screen lg:flex bg-white dark:bg-slate-950 transition-colors duration-200;
+}
+
+.page-content-grid {
+  @apply p-4 lg:p-6 space-y-4 lg:grid lg:grid-cols-2 lg:gap-6;
+}
+
+/* Login Page */
+.auth-shell {
+  @apply relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-10 text-white;
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.18), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.18), transparent 28%),
+    linear-gradient(180deg, #04081d 0%, #070d2d 100%);
+}
+
+.auth-glow {
+  @apply pointer-events-none absolute rounded-full blur-3xl;
+}
+
+.auth-glow-one {
+  @apply -left-16 top-20 h-40 w-40 bg-emerald-500/20;
+}
+
+.auth-glow-two {
+  @apply -right-12 bottom-16 h-52 w-52 bg-blue-500/15;
+}
+
+.auth-card {
+  @apply relative z-10 w-full max-w-[28rem] rounded-[28px] border border-white/10 bg-white/[0.03] px-6 py-7 shadow-[0_24px_80px_rgba(2,6,23,0.65)] backdrop-blur-xl sm:px-8;
+}
+
+.auth-brand {
+  @apply mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-sm font-medium text-slate-200;
+}
+
+.auth-brand-icon {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300;
+}
+
+.auth-copy {
+  @apply space-y-2;
+}
+
+.auth-copy h1 {
+  @apply text-4xl font-semibold tracking-tight text-white;
+}
+
+.auth-copy p {
+  @apply text-sm leading-6 text-slate-400;
+}
+
+.auth-form {
+  @apply mt-8 space-y-5;
+}
+
+.auth-field {
+  @apply block;
+}
+
+.auth-label {
+  @apply mb-2 block text-sm font-medium text-slate-200;
+}
+
+.auth-input-shell {
+  @apply flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-slate-300 transition duration-200 focus-within:border-emerald-400/80 focus-within:bg-white/[0.07] focus-within:ring-2 focus-within:ring-emerald-400/20;
+}
+
+.auth-input-icon {
+  @apply shrink-0 text-slate-500;
+}
+
+.auth-input {
+  @apply w-full bg-transparent text-sm text-white placeholder:text-slate-500 focus:outline-none;
+}
+
+.auth-visibility-toggle {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 transition hover:bg-white/5 hover:text-slate-200;
+}
+
+.auth-error {
+  @apply rounded-2xl border border-red-400/25 bg-red-500/10 px-4 py-3 text-sm text-red-200;
+}
+
+.auth-submit {
+  @apply flex w-full items-center justify-center rounded-2xl bg-emerald-500 px-4 py-3 text-sm font-semibold text-white transition duration-200 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.auth-switch-copy {
+  @apply mt-7 text-center text-sm text-slate-400;
+}
+
+.auth-switch-button {
+  @apply font-medium text-emerald-400 transition hover:text-emerald-300;
+}
+
+.light .auth-shell {
+  color: #0f172a;
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.16), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.14), transparent 30%),
+    linear-gradient(180deg, #edf4ff 0%, #dbe6ff 100%);
+}
+
+.light .auth-card {
+  @apply border-slate-200/70 bg-white/80 shadow-[0_24px_80px_rgba(15,23,42,0.12)];
+}
+
+.light .auth-brand {
+  @apply border-slate-200 bg-slate-50 text-slate-700;
+}
+
+.light .auth-brand-icon {
+  @apply bg-emerald-100 text-emerald-700;
+}
+
+.light .auth-copy h1 {
+  @apply text-slate-950;
+}
+
+.light .auth-copy p,
+.light .auth-switch-copy {
+  @apply text-slate-500;
+}
+
+.light .auth-label {
+  @apply text-slate-700;
+}
+
+.light .auth-input-shell {
+  @apply border-slate-200 bg-slate-50 text-slate-600 focus-within:bg-white;
+}
+
+.light .auth-input-icon,
+.light .auth-visibility-toggle {
+  @apply text-slate-400;
+}
+
+.light .auth-input {
+  @apply text-slate-900 placeholder:text-slate-400;
+}
+
+.light .auth-visibility-toggle:hover {
+  @apply bg-slate-200/70 text-slate-700;
+}
+
+/* App Shell */
+.app-shell {
+  @apply min-h-screen bg-[#050a1f] px-4 py-4 text-white lg:flex lg:gap-5 lg:px-6;
+}
+
+.sidebar-panel {
+  @apply flex flex-col justify-between rounded-[2rem] border border-white/6 bg-[#10182e] px-4 py-5 shadow-[0_18px_60px_rgba(2,6,23,0.35)] lg:min-h-[calc(100vh-2rem)] lg:w-[15.5rem] lg:shrink-0;
+}
+
+.sidebar-brand {
+  @apply flex items-center gap-3 px-2 text-2xl font-semibold tracking-tight text-white;
+}
+
+.sidebar-brand-icon {
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-emerald-400 text-slate-950 shadow-[0_14px_34px_rgba(16,185,129,0.35)];
+}
+
+.sidebar-nav {
+  @apply mt-8 flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible;
+}
+
+.sidebar-link {
+  @apply inline-flex min-w-max items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium text-slate-400 transition duration-200 hover:bg-white/4 hover:text-white lg:w-full;
+}
+
+.sidebar-link.is-active {
+  @apply bg-emerald-400/8 text-emerald-300 shadow-[inset_3px_0_0_0_#34d399];
+}
+
+.sidebar-theme-toggle {
+  @apply mt-6 inline-flex items-center gap-3 rounded-2xl border border-white/6 bg-white/3 px-4 py-3 text-sm font-medium text-slate-300 transition duration-200 hover:bg-white/6;
+}
+
+.content-shell {
+  @apply min-w-0 flex-1;
+}
+
+/* Dashboard Page */
+.dashboard-shell {
+  @apply mx-auto min-w-0 max-w-[62rem] pb-10;
+}
+
+.dashboard-hero {
+  @apply rounded-[2rem] bg-linear-to-br from-emerald-400 to-emerald-500 px-6 py-6 text-slate-950 shadow-[0_18px_50px_rgba(16,185,129,0.22)] sm:px-8 sm:py-7;
+}
+
+.dashboard-hero-eyebrow {
+  @apply text-sm font-medium text-emerald-950/70;
+}
+
+.dashboard-hero-title {
+  @apply mt-1 text-3xl font-semibold tracking-tight sm:text-4xl;
+}
+
+.dashboard-hero-banner {
+  @apply mt-5 flex items-center gap-3 rounded-2xl bg-white/20 px-4 py-4 text-sm font-medium text-white backdrop-blur-sm;
+}
+
+.dashboard-highlight {
+  @apply px-4 sm:px-8;
+}
+
+.dashboard-highlight-card {
+  @apply -mt-4 rounded-[2rem] border border-white/6 bg-[#11192f] p-5 shadow-[0_24px_70px_rgba(2,6,23,0.45)] sm:-mt-6 sm:p-6;
+}
+
+.dashboard-progress-block {
+  @apply space-y-4;
+}
+
+.dashboard-progress-header {
+  @apply flex items-start justify-between gap-4;
+}
+
+.dashboard-progress-label {
+  @apply flex items-start gap-3;
+}
+
+.dashboard-progress-label p {
+  @apply text-xs font-medium uppercase tracking-[0.08em] text-slate-400;
+}
+
+.dashboard-progress-label strong {
+  @apply mt-1 block text-3xl font-semibold tracking-tight text-white;
+}
+
+.dashboard-progress-meta {
+  @apply text-right;
+}
+
+.dashboard-progress-meta span {
+  @apply block text-xs font-medium uppercase tracking-[0.08em] text-slate-500;
+}
+
+.dashboard-progress-meta strong {
+  @apply mt-1 block text-lg font-semibold text-white;
+}
+
+.dashboard-progress-footer {
+  @apply flex items-center justify-between text-sm;
+}
+
+.dashboard-progress-footer span:first-child {
+  @apply text-emerald-300;
+}
+
+.dashboard-progress-footer span:last-child {
+  @apply text-slate-500;
+}
+
+.dashboard-progress-divider {
+  @apply my-6 h-px bg-white/6;
+}
+
+.dashboard-burn-track {
+  @apply h-3 overflow-hidden rounded-full bg-slate-800;
+}
+
+.dashboard-burn-fill {
+  @apply h-full rounded-full bg-red-500 transition-all duration-300;
+}
+
+.dashboard-grid {
+  @apply mt-6 min-w-0 grid gap-5 md:grid-cols-2;
+}
+
+.dashboard-metric-card,
+.dashboard-goal-card,
+.dashboard-body-card,
+.dashboard-summary-card,
+.dashboard-chart-card {
+  @apply rounded-[1.75rem] border border-white/6 bg-[#11192f] shadow-[0_18px_60px_rgba(2,6,23,0.28)];
+}
+
+.dashboard-metric-card {
+  @apply space-y-3;
+}
+
+.dashboard-metric-header {
+  @apply flex items-center gap-3 text-sm text-slate-400;
+}
+
+.dashboard-metric-card strong {
+  @apply block text-4xl font-semibold tracking-tight text-white;
+}
+
+.dashboard-metric-card span {
+  @apply text-sm text-slate-500;
+}
+
+.dashboard-stat-icon {
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-2xl;
+}
+
+.dashboard-goal-card {
+  @apply bg-linear-to-br from-slate-700 via-slate-700/90 to-slate-800;
+}
+
+.dashboard-goal-head {
+  @apply flex items-start gap-3;
+}
+
+.dashboard-goal-head p {
+  @apply text-sm text-slate-300;
+}
+
+.dashboard-goal-head strong {
+  @apply mt-1 block text-2xl font-semibold tracking-tight text-white;
+}
+
+.dashboard-card-heading {
+  @apply flex items-start gap-3;
+}
+
+.dashboard-card-heading h3,
+.dashboard-summary-card h3,
+.dashboard-chart-card h3 {
+  @apply text-xl font-semibold tracking-tight text-white;
+}
+
+.dashboard-card-heading p {
+  @apply text-sm text-slate-500;
+}
+
+.dashboard-detail-list {
+  @apply mt-6 space-y-4;
+}
+
+.dashboard-detail-row {
+  @apply flex items-center justify-between gap-3 text-sm;
+}
+
+.dashboard-detail-label {
+  @apply inline-flex items-center gap-2 text-slate-400;
+}
+
+.dashboard-detail-row strong {
+  @apply text-base font-semibold text-white;
+}
+
+.dashboard-bmi-block {
+  @apply mt-6;
+}
+
+.dashboard-bmi-header {
+  @apply flex items-center justify-between text-sm;
+}
+
+.dashboard-bmi-header span {
+  @apply text-slate-400;
+}
+
+.dashboard-bmi-header strong {
+  @apply text-lg font-semibold text-emerald-300;
+}
+
+.dashboard-bmi-bar {
+  @apply mt-3 h-2 overflow-hidden rounded-full bg-linear-to-r from-cyan-500 via-emerald-400 to-amber-400;
+}
+
+.dashboard-bmi-bar-fill {
+  @apply h-full rounded-full bg-white/35;
+}
+
+.dashboard-bmi-scale {
+  @apply mt-2 flex items-center justify-between text-[11px] text-slate-500;
+}
+
+.dashboard-summary-list {
+  @apply mt-6 space-y-4;
+}
+
+.dashboard-summary-row {
+  @apply flex items-center justify-between gap-3 border-b border-white/6 pb-3 text-sm;
+}
+
+.dashboard-summary-row:last-child {
+  @apply border-b-0 pb-0;
+}
+
+.dashboard-summary-row span {
+  @apply text-slate-400;
+}
+
+.dashboard-summary-row strong {
+  @apply text-white;
+}
+
+.dashboard-chart-card {
+  @apply min-w-0 md:col-span-2;
+}
+
+.light .app-shell {
+  @apply bg-slate-100 text-slate-900;
+}
+
+.light .sidebar-panel {
+  @apply border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)];
+}
+
+.light .sidebar-brand {
+  @apply text-slate-950;
+}
+
+.light .sidebar-brand-icon {
+  @apply bg-emerald-500 text-white shadow-[0_14px_34px_rgba(16,185,129,0.2)];
+}
+
+.light .sidebar-link {
+  @apply text-slate-500 hover:bg-slate-100 hover:text-slate-900;
+}
+
+.light .sidebar-link.is-active {
+  @apply bg-emerald-50 text-emerald-700 shadow-[inset_3px_0_0_0_#10b981];
+}
+
+.light .sidebar-theme-toggle {
+  @apply border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100;
+}
+
+.light .dashboard-hero {
+  @apply shadow-[0_18px_50px_rgba(16,185,129,0.16)];
+}
+
+.light .dashboard-hero-banner {
+  @apply bg-white/55 text-emerald-950;
+}
+
+.light .dashboard-highlight-card,
+.light .dashboard-metric-card,
+.light .dashboard-body-card,
+.light .dashboard-summary-card,
+.light .dashboard-chart-card {
+  @apply border-slate-200 bg-white shadow-[0_18px_60px_rgba(15,23,42,0.08)];
+}
+
+.light .dashboard-goal-card {
+  @apply border-emerald-100 bg-linear-to-br from-emerald-50 to-cyan-50 shadow-[0_18px_60px_rgba(15,23,42,0.08)];
+}
+
+.light .dashboard-progress-label p,
+.light .dashboard-progress-meta span,
+.light .dashboard-progress-footer span:last-child,
+.light .dashboard-metric-header,
+.light .dashboard-card-heading p,
+.light .dashboard-detail-label,
+.light .dashboard-bmi-header span,
+.light .dashboard-bmi-scale,
+.light .dashboard-summary-row span,
+.light .dashboard-goal-head p {
+  @apply text-slate-500;
+}
+
+.light .dashboard-progress-label strong,
+.light .dashboard-progress-meta strong,
+.light .dashboard-metric-card strong,
+.light .dashboard-card-heading h3,
+.light .dashboard-summary-card h3,
+.light .dashboard-chart-card h3,
+.light .dashboard-summary-row strong,
+.light .dashboard-detail-row strong,
+.light .dashboard-goal-head strong {
+  @apply text-slate-900;
+}
+
+.light .dashboard-progress-footer span:first-child,
+.light .dashboard-bmi-header strong {
+  @apply text-emerald-600;
+}
+
+.light .dashboard-progress-divider {
+  @apply bg-slate-200;
+}
+
+.light .dashboard-burn-track {
+  @apply bg-slate-200;
+}
+
+.light .dashboard-summary-row {
+  @apply border-slate-200;
+}
+
+@media (max-width: 1023px) {
+  .sidebar-panel {
+    @apply mb-5 gap-5;
+  }
+
+  .sidebar-theme-toggle {
+    @apply mt-0 w-full justify-center;
+  }
+}
+
+/* Profile Page */
+.profile-shell {
+  @apply min-h-[calc(100vh-2rem)] overflow-hidden rounded-[2rem] border border-white/6 bg-[#060b20] shadow-[0_24px_70px_rgba(2,6,23,0.4)];
+}
+
+.profile-header {
+  @apply border-b border-white/6 px-5 py-5 sm:px-7 sm:py-6;
+}
+
+.profile-header-copy h1 {
+  @apply text-[2rem] font-semibold tracking-tight text-white;
+}
+
+.profile-header-copy p {
+  @apply mt-1 text-sm text-slate-400;
+}
+
+.profile-layout {
+  @apply grid gap-5 px-5 py-5 sm:px-7 sm:py-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(18rem,0.72fr)];
+}
+
+.profile-card,
+.profile-stats-card {
+  @apply rounded-[1.75rem] border border-white/6 bg-[#11192f] p-4 shadow-[0_18px_48px_rgba(2,6,23,0.28)] sm:p-5;
+}
+
+.profile-card-heading {
+  @apply flex items-start gap-3;
+}
+
+.profile-avatar-badge {
+  @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-emerald-500 text-white shadow-[0_12px_30px_rgba(16,185,129,0.24)];
+}
+
+.profile-card-heading h2,
+.profile-stats-heading h2 {
+  @apply text-lg font-semibold tracking-tight text-white;
+}
+
+.profile-card-heading p {
+  @apply mt-1 text-sm text-slate-400;
+}
+
+.profile-info-list {
+  @apply mt-4 space-y-3;
+}
+
+.profile-info-card {
+  @apply rounded-[1.15rem] bg-[#1d2840] px-4 py-4;
+}
+
+.profile-info-card-copy {
+  @apply flex items-center gap-3;
+}
+
+.profile-info-icon {
+  @apply inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl;
+}
+
+.profile-info-icon.is-age {
+  @apply bg-blue-500/10 text-blue-300;
+}
+
+.profile-info-icon.is-weight {
+  @apply bg-violet-500/10 text-violet-300;
+}
+
+.profile-info-icon.is-height {
+  @apply bg-emerald-500/10 text-emerald-300;
+}
+
+.profile-info-icon.is-goal {
+  @apply bg-amber-500/10 text-amber-300;
+}
+
+.profile-info-card p {
+  @apply text-xs text-slate-500;
+}
+
+.profile-info-card strong {
+  @apply mt-1 block text-sm font-semibold text-slate-100;
+}
+
+.profile-edit-button,
+.profile-save-button {
+  @apply mt-4 inline-flex w-full items-center justify-center gap-2 rounded-[1.15rem] bg-[#1d2840] px-4 py-4 text-sm font-semibold text-white transition duration-200 hover:bg-[#25314b] disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.profile-form {
+  @apply mt-4;
+}
+
+.profile-form-grid {
+  @apply grid gap-3 sm:grid-cols-2;
+}
+
+.profile-field {
+  @apply space-y-2;
+}
+
+.profile-field span {
+  @apply block text-sm font-medium text-slate-200;
+}
+
+.profile-input,
+.profile-select {
+  @apply w-full rounded-2xl border border-white/8 bg-[#1a243a] px-4 py-3 text-sm text-white outline-none transition duration-200 placeholder:text-slate-500 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/15;
+}
+
+.profile-form-actions {
+  @apply mt-4 flex flex-col gap-3 sm:flex-row;
+}
+
+.profile-form-actions .profile-cancel-button,
+.profile-form-actions .profile-save-button {
+  @apply w-full sm:w-auto;
+}
+
+.profile-cancel-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-[1.15rem] border border-white/8 bg-white/4 px-4 py-4 text-sm font-medium text-slate-200 transition duration-200 hover:bg-white/6 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.profile-save-button {
+  @apply mt-0 bg-emerald-500 shadow-[0_14px_30px_rgba(16,185,129,0.22)] hover:bg-emerald-400;
+}
+
+.profile-feedback {
+  @apply mt-4 rounded-2xl border px-4 py-3 text-sm;
+}
+
+.profile-feedback.is-error {
+  @apply border-rose-400/25 bg-rose-500/10 text-rose-200;
+}
+
+.profile-feedback.is-success {
+  @apply border-emerald-400/20 bg-emerald-500/10 text-emerald-200;
+}
+
+.profile-side-column {
+  @apply flex min-w-0 flex-col gap-4;
+}
+
+.profile-stats-grid {
+  @apply mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-2;
+}
+
+.profile-stat-tile {
+  @apply rounded-[1.15rem] px-4 py-5 text-center;
+}
+
+.profile-stat-tile.is-food {
+  @apply bg-emerald-500/8;
+}
+
+.profile-stat-tile.is-activity {
+  @apply bg-blue-500/8;
+}
+
+.profile-stat-tile strong {
+  @apply block text-3xl font-semibold tracking-tight;
+}
+
+.profile-stat-tile.is-food strong {
+  @apply text-emerald-300;
+}
+
+.profile-stat-tile.is-activity strong {
+  @apply text-blue-300;
+}
+
+.profile-stat-tile span {
+  @apply mt-2 block text-sm text-slate-400;
+}
+
+.profile-logout-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-[1.15rem] border border-rose-400/45 bg-rose-500/8 px-4 py-4 text-sm font-semibold text-rose-300 transition duration-200 hover:bg-rose-500/12;
+}
+
+.light .profile-shell {
+  @apply border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)];
+}
+
+.light .profile-header {
+  @apply border-slate-200;
+}
+
+.light .profile-header-copy h1,
+.light .profile-card-heading h2,
+.light .profile-stats-heading h2,
+.light .profile-info-card strong {
+  @apply text-slate-950;
+}
+
+.light .profile-header-copy p,
+.light .profile-card-heading p,
+.light .profile-info-card p,
+.light .profile-stat-tile span {
+  @apply text-slate-500;
+}
+
+.light .profile-card,
+.light .profile-stats-card {
+  @apply border-slate-200 bg-slate-50 shadow-[0_18px_48px_rgba(15,23,42,0.06)];
+}
+
+.light .profile-avatar-badge {
+  @apply bg-emerald-500 text-white;
+}
+
+.light .profile-info-card,
+.light .profile-edit-button {
+  @apply bg-white;
+}
+
+.light .profile-edit-button {
+  @apply text-slate-900 hover:bg-slate-100;
+}
+
+.light .profile-field span {
+  @apply text-slate-700;
+}
+
+.light .profile-input,
+.light .profile-select {
+  @apply border-slate-200 bg-white text-slate-900 placeholder:text-slate-400;
+}
+
+.light .profile-cancel-button {
+  @apply border-slate-200 bg-white text-slate-700 hover:bg-slate-100;
+}
+
+.light .profile-stat-tile.is-food {
+  @apply bg-emerald-50;
+}
+
+.light .profile-stat-tile.is-activity {
+  @apply bg-blue-50;
+}
+
+.light .profile-stat-tile.is-food strong {
+  @apply text-emerald-600;
+}
+
+.light .profile-stat-tile.is-activity strong {
+  @apply text-blue-600;
+}
+
+.light .profile-logout-button {
+  @apply border-rose-200 bg-rose-50 text-rose-600 hover:bg-rose-100;
+}
+
+@media (max-width: 1023px) {
+  .profile-shell {
+    @apply min-h-0;
+  }
+}
+
+/* Food Log Page */
+.food-log-shell {
+  @apply min-h-[calc(100vh-2rem)] overflow-hidden rounded-[2rem] border border-white/6 bg-[#060b20] shadow-[0_24px_70px_rgba(2,6,23,0.4)];
+}
+
+.food-log-header {
+  @apply flex items-start justify-between gap-5 border-b border-white/6 px-5 py-5 sm:px-7 sm:py-6;
+}
+
+.food-log-header-copy h1 {
+  @apply text-[2rem] font-semibold tracking-tight text-white;
+}
+
+.food-log-header-copy p {
+  @apply mt-1 text-sm text-slate-400;
+}
+
+.food-log-total {
+  @apply shrink-0 text-right;
+}
+
+.food-log-total span {
+  @apply block text-xs font-medium uppercase tracking-[0.08em] text-slate-500;
+}
+
+.food-log-total strong {
+  @apply mt-2 block text-3xl font-semibold tracking-tight text-emerald-300;
+}
+
+.food-log-grid {
+  @apply grid gap-5 px-5 py-5 sm:px-7 sm:py-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1fr)];
+}
+
+.food-log-left-column,
+.food-log-right-column {
+  @apply flex min-w-0 flex-col gap-4;
+}
+
+.food-log-card,
+.food-log-form,
+.food-log-meal-card,
+.food-log-empty-state {
+  @apply rounded-[1.75rem] border border-white/6 bg-[#11192f] shadow-[0_18px_48px_rgba(2,6,23,0.28)];
+}
+
+.food-log-card,
+.food-log-form,
+.food-log-empty-state {
+  @apply p-5;
+}
+
+.food-log-card-header h2,
+.food-log-form-header h3,
+.food-log-meal-card-title h3,
+.food-log-empty-state h3 {
+  @apply text-lg font-semibold tracking-tight text-white;
+}
+
+.food-log-card-header p,
+.food-log-form-header p,
+.food-log-meal-card-title p,
+.food-log-empty-state p {
+  @apply mt-1 text-sm text-slate-400;
+}
+
+.food-log-chip-grid {
+  @apply mt-4 flex flex-wrap gap-3;
+}
+
+.food-log-chip {
+  @apply inline-flex items-center gap-2 rounded-full border border-white/8 bg-[#1b263d] px-4 py-2 text-sm font-medium text-slate-300 transition duration-200 hover:border-emerald-300/35 hover:text-white;
+}
+
+.food-log-chip.is-active {
+  @apply border-emerald-400/45 bg-emerald-400/10 text-emerald-200;
+}
+
+.food-log-action,
+.food-log-primary-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-[1.15rem] bg-emerald-500 px-4 py-4 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(16,185,129,0.22)] transition duration-200 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.food-log-action {
+  @apply w-full;
+}
+
+.food-log-secondary-button {
+  @apply inline-flex items-center justify-center rounded-[1.15rem] border border-white/8 bg-white/4 px-4 py-4 text-sm font-medium text-slate-200 transition duration-200 hover:bg-white/6 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.food-log-form-grid {
+  @apply mt-5 grid gap-3 sm:grid-cols-2;
+}
+
+.food-log-field {
+  @apply space-y-2;
+}
+
+.food-log-field span {
+  @apply block text-sm font-medium text-slate-200;
+}
+
+.food-log-field-wide {
+  @apply sm:col-span-2;
+}
+
+.food-log-input,
+.food-log-select {
+  @apply w-full rounded-2xl border border-white/8 bg-[#1a243a] px-4 py-3 text-sm text-white outline-none transition duration-200 placeholder:text-slate-500 focus:border-emerald-400/60 focus:ring-2 focus:ring-emerald-400/15;
+}
+
+.food-log-form-actions {
+  @apply mt-4 flex flex-col gap-3 sm:flex-row;
+}
+
+.food-log-form-actions .food-log-secondary-button,
+.food-log-form-actions .food-log-primary-button {
+  @apply w-full sm:w-auto;
+}
+
+.food-log-ai-card {
+  @apply overflow-hidden;
+}
+
+.food-log-ai-header {
+  @apply flex items-start justify-between gap-4;
+}
+
+.food-log-ai-pill {
+  @apply inline-flex shrink-0 items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/12 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-emerald-200;
+}
+
+.food-log-upload-surface {
+  @apply mt-4 relative flex min-h-[14rem] cursor-pointer items-center justify-center overflow-hidden rounded-[1.5rem] border border-dashed border-white/10 bg-[#0d1531] transition duration-200 hover:border-emerald-300/40 hover:bg-[#101a3d];
+}
+
+.food-log-upload-surface.has-preview {
+  @apply p-0;
+}
+
+.food-log-upload-input {
+  @apply sr-only;
+}
+
+.food-log-upload-placeholder {
+  @apply flex flex-col items-center justify-center px-6 py-8 text-center;
+}
+
+.food-log-upload-icon {
+  @apply inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-300;
+}
+
+.food-log-upload-placeholder strong {
+  @apply mt-4 text-base font-semibold tracking-tight text-white;
+}
+
+.food-log-upload-placeholder p {
+  @apply mt-2 text-sm text-slate-400;
+}
+
+.food-log-upload-preview {
+  @apply h-full min-h-[14rem] w-full object-cover;
+}
+
+.food-log-upload-meta {
+  @apply mt-3 flex items-center justify-between gap-3 text-xs text-slate-400;
+}
+
+.food-log-ai-actions {
+  @apply mt-4 flex flex-col gap-3 sm:flex-row;
+}
+
+.food-log-ai-actions .food-log-action,
+.food-log-ai-actions .food-log-secondary-button {
+  @apply w-full;
+}
+
+.food-log-ai-result {
+  @apply mt-4 rounded-[1.5rem] border border-white/8 bg-[#0d1531] p-4;
+}
+
+.food-log-ai-result-header {
+  @apply flex items-start justify-between gap-4;
+}
+
+.food-log-ai-result-label {
+  @apply text-xs font-medium uppercase tracking-[0.08em] text-emerald-300;
+}
+
+.food-log-ai-result-header h3 {
+  @apply mt-2 text-lg font-semibold tracking-tight text-white;
+}
+
+.food-log-ai-confidence {
+  @apply inline-flex shrink-0 items-center rounded-full px-3 py-1 text-xs font-semibold;
+}
+
+.food-log-ai-confidence.is-high {
+  @apply bg-emerald-400/15 text-emerald-200;
+}
+
+.food-log-ai-confidence.is-medium {
+  @apply bg-amber-400/15 text-amber-200;
+}
+
+.food-log-ai-confidence.is-low {
+  @apply bg-rose-400/15 text-rose-200;
+}
+
+.food-log-ai-stat-grid {
+  @apply mt-4 grid gap-3 sm:grid-cols-2;
+}
+
+.food-log-ai-stat {
+  @apply rounded-2xl border border-white/8 bg-white/3 p-3;
+}
+
+.food-log-ai-stat span {
+  @apply block text-xs font-medium uppercase tracking-[0.08em] text-slate-400;
+}
+
+.food-log-ai-stat strong {
+  @apply mt-2 block text-sm font-semibold text-white;
+}
+
+.food-log-ai-note {
+  @apply mt-4 text-sm leading-6 text-slate-300;
+}
+
+.food-log-feedback {
+  @apply rounded-2xl border px-4 py-3 text-sm;
+}
+
+.food-log-feedback.is-error {
+  @apply border-rose-400/25 bg-rose-500/10 text-rose-200;
+}
+
+.food-log-feedback.is-success {
+  @apply border-emerald-400/20 bg-emerald-500/10 text-emerald-200;
+}
+
+.food-log-meal-card {
+  @apply p-4;
+}
+
+.food-log-meal-card-header {
+  @apply flex items-start justify-between gap-4 px-2 pb-4;
+}
+
+.food-log-meal-card-title {
+  @apply flex min-w-0 items-start gap-3;
+}
+
+.food-log-meal-badge {
+  @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl;
+}
+
+.food-log-meal-badge.is-breakfast {
+  @apply bg-amber-50 text-amber-500;
+}
+
+.food-log-meal-badge.is-lunch {
+  @apply bg-orange-50 text-orange-500;
+}
+
+.food-log-meal-badge.is-dinner {
+  @apply bg-indigo-50 text-indigo-500;
+}
+
+.food-log-meal-badge.is-snack {
+  @apply bg-pink-50 text-pink-500;
+}
+
+.food-log-meal-calories {
+  @apply shrink-0 text-right;
+}
+
+.food-log-meal-calories strong {
+  @apply block text-lg font-semibold text-white;
+}
+
+.food-log-entry-list {
+  @apply space-y-3;
+}
+
+.food-log-entry-row {
+  @apply flex items-center justify-between gap-3 rounded-[1.15rem] bg-[#1d2840] px-4 py-4;
+}
+
+.food-log-entry-copy {
+  @apply min-w-0;
+}
+
+.food-log-entry-copy strong {
+  @apply block truncate text-sm font-medium text-slate-100;
+}
+
+.food-log-entry-meta {
+  @apply flex shrink-0 items-center gap-3;
+}
+
+.food-log-entry-calories {
+  @apply text-sm font-medium text-slate-300;
+}
+
+.food-log-delete {
+  @apply inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition duration-200 hover:bg-white/5 hover:text-rose-300 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.food-log-empty-state {
+  @apply flex min-h-[22rem] flex-col justify-end bg-linear-to-br from-[#0d1531] to-[#090f24];
+}
+
+.food-log-empty-icon {
+  @apply mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-400/12 text-emerald-300;
+}
+
+.light .food-log-shell {
+  @apply border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)];
+}
+
+.light .food-log-header {
+  @apply border-slate-200;
+}
+
+.light .food-log-header-copy h1,
+.light .food-log-card-header h2,
+.light .food-log-form-header h3,
+.light .food-log-meal-card-title h3,
+.light .food-log-upload-placeholder strong,
+.light .food-log-ai-result-header h3,
+.light .food-log-ai-stat strong,
+.light .food-log-meal-calories strong,
+.light .food-log-entry-copy strong,
+.light .food-log-empty-state h3 {
+  @apply text-slate-950;
+}
+
+.light .food-log-card-header p,
+.light .food-log-header-copy p,
+.light .food-log-total span,
+.light .food-log-form-header p,
+.light .food-log-meal-card-title p,
+.light .food-log-empty-state p {
+  @apply text-slate-500;
+}
+
+.light .food-log-total strong {
+  @apply text-emerald-600;
+}
+
+.light .food-log-card,
+.light .food-log-form,
+.light .food-log-meal-card,
+.light .food-log-empty-state {
+  @apply border-slate-200 bg-slate-50 shadow-[0_18px_48px_rgba(15,23,42,0.06)];
+}
+
+.light .food-log-chip {
+  @apply border-slate-200 bg-white text-slate-600 hover:border-emerald-300 hover:text-slate-900;
+}
+
+.light .food-log-chip.is-active {
+  @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+}
+
+.light .food-log-ai-pill {
+  @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+}
+
+.light .food-log-secondary-button {
+  @apply border-slate-200 bg-white text-slate-700 hover:bg-slate-100;
+}
+
+.light .food-log-input,
+.light .food-log-select {
+  @apply border-slate-200 bg-white text-slate-900 placeholder:text-slate-400;
+}
+
+.light .food-log-field span,
+.light .food-log-entry-calories {
+  @apply text-slate-600;
+}
+
+.light .food-log-upload-surface {
+  @apply border-emerald-200 bg-white hover:border-emerald-300 hover:bg-slate-50;
+}
+
+.light .food-log-upload-icon {
+  @apply bg-emerald-50 text-emerald-600;
+}
+
+.light .food-log-upload-placeholder p,
+.light .food-log-upload-meta,
+.light .food-log-ai-stat span,
+.light .food-log-ai-note {
+  @apply text-slate-500;
+}
+
+.light .food-log-ai-result {
+  @apply border-slate-200 bg-white;
+}
+
+.light .food-log-ai-stat {
+  @apply border-slate-200 bg-slate-50;
+}
+
+.light .food-log-ai-confidence.is-high {
+  @apply bg-emerald-50 text-emerald-700;
+}
+
+.light .food-log-ai-confidence.is-medium {
+  @apply bg-amber-50 text-amber-700;
+}
+
+.light .food-log-ai-confidence.is-low {
+  @apply bg-rose-50 text-rose-700;
+}
+
+.light .food-log-entry-row {
+  @apply bg-white;
+}
+
+.light .food-log-delete {
+  @apply text-slate-400 hover:bg-slate-100 hover:text-rose-500;
+}
+
+.light .food-log-empty-state {
+  @apply bg-linear-to-br from-emerald-50 to-cyan-50;
+}
+
+@media (max-width: 1023px) {
+  .food-log-shell {
+    @apply min-h-0;
+  }
+
+  .food-log-header {
+    @apply flex-col items-start;
+  }
+
+  .food-log-total {
+    @apply text-left;
+  }
+}
+
+.food-entry-item {
+  @apply flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-xl transition-colors duration-200;
+}
+
+/* Activity Log Page */
+.activity-log-shell {
+  @apply min-h-[calc(100vh-2rem)] overflow-hidden rounded-[2rem] border border-white/6 bg-[#060b20] shadow-[0_24px_70px_rgba(2,6,23,0.4)];
+}
+
+.activity-log-header {
+  @apply flex items-start justify-between gap-5 border-b border-white/6 px-5 py-5 sm:px-7 sm:py-6;
+}
+
+.activity-log-header-copy h1 {
+  @apply text-[2rem] font-semibold tracking-tight text-white;
+}
+
+.activity-log-header-copy p {
+  @apply mt-1 text-sm text-slate-400;
+}
+
+.activity-log-total {
+  @apply shrink-0 text-right;
+}
+
+.activity-log-total span {
+  @apply block text-xs font-medium uppercase tracking-[0.08em] text-slate-500;
+}
+
+.activity-log-total strong {
+  @apply mt-2 block text-3xl font-semibold tracking-tight text-blue-400;
+}
+
+.activity-log-grid {
+  @apply grid gap-5 px-5 py-5 sm:px-7 sm:py-6 xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1fr)];
+}
+
+.activity-log-left-column,
+.activity-log-right-column {
+  @apply flex min-w-0 flex-col gap-4;
+}
+
+.activity-log-card,
+.activity-log-form,
+.activity-log-summary-card {
+  @apply rounded-[1.75rem] border border-white/6 bg-[#11192f] shadow-[0_18px_48px_rgba(2,6,23,0.28)];
+}
+
+.activity-log-card,
+.activity-log-form {
+  @apply p-5;
+}
+
+.activity-log-card-header h2,
+.activity-log-form-header h3,
+.activity-log-summary-title h2,
+.activity-log-empty-state h3 {
+  @apply text-lg font-semibold tracking-tight text-white;
+}
+
+.activity-log-form-header p,
+.activity-log-summary-title p,
+.activity-log-empty-state p {
+  @apply mt-1 text-sm text-slate-400;
+}
+
+.activity-log-chip-grid {
+  @apply mt-4 flex flex-wrap gap-3;
+}
+
+.activity-log-chip {
+  @apply inline-flex items-center gap-2 rounded-full border border-white/8 bg-[#1b263d] px-4 py-2 text-sm font-medium text-slate-300 transition duration-200 hover:border-blue-300/35 hover:text-white disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.activity-log-action,
+.activity-log-primary-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-[1.15rem] bg-emerald-500 px-4 py-4 text-sm font-semibold text-white shadow-[0_14px_30px_rgba(16,185,129,0.22)] transition duration-200 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.activity-log-action {
+  @apply w-full;
+}
+
+.activity-log-secondary-button {
+  @apply inline-flex items-center justify-center rounded-[1.15rem] border border-white/8 bg-white/4 px-4 py-4 text-sm font-medium text-slate-200 transition duration-200 hover:bg-white/6 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.activity-log-form-grid {
+  @apply mt-5 grid gap-3 sm:grid-cols-2;
+}
+
+.activity-log-field {
+  @apply space-y-2;
+}
+
+.activity-log-field span {
+  @apply block text-sm font-medium text-slate-200;
+}
+
+.activity-log-field-wide {
+  @apply sm:col-span-2;
+}
+
+.activity-log-input {
+  @apply w-full rounded-2xl border border-white/8 bg-[#1a243a] px-4 py-3 text-sm text-white outline-none transition duration-200 placeholder:text-slate-500 focus:border-blue-400/60 focus:ring-2 focus:ring-blue-400/15;
+}
+
+.activity-log-form-actions {
+  @apply mt-4 flex flex-col gap-3 sm:flex-row;
+}
+
+.activity-log-form-actions .activity-log-secondary-button,
+.activity-log-form-actions .activity-log-primary-button {
+  @apply w-full sm:w-auto;
+}
+
+.activity-log-feedback {
+  @apply rounded-2xl border px-4 py-3 text-sm;
+}
+
+.activity-log-feedback.is-error {
+  @apply border-rose-400/25 bg-rose-500/10 text-rose-200;
+}
+
+.activity-log-feedback.is-success {
+  @apply border-emerald-400/20 bg-emerald-500/10 text-emerald-200;
+}
+
+.activity-log-summary-card {
+  @apply flex h-full min-h-[28rem] flex-col p-4 sm:p-5;
+}
+
+.activity-log-summary-header {
+  @apply pb-3;
+}
+
+.activity-log-summary-title {
+  @apply flex items-start gap-3;
+}
+
+.activity-log-summary-badge {
+  @apply inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-blue-500;
+}
+
+.activity-log-list {
+  @apply flex-1 space-y-3;
+}
+
+.activity-log-row {
+  @apply flex items-center justify-between gap-3 rounded-[1.15rem] bg-[#1d2840] px-4 py-4;
+}
+
+.activity-log-row-left {
+  @apply flex min-w-0 items-center gap-3;
+}
+
+.activity-log-row-icon {
+  @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-300;
+}
+
+.activity-log-row-copy {
+  @apply min-w-0;
+}
+
+.activity-log-row-copy strong {
+  @apply block truncate text-sm font-medium text-slate-100;
+}
+
+.activity-log-row-copy span {
+  @apply mt-1 block text-xs text-slate-500;
+}
+
+.activity-log-row-right {
+  @apply flex shrink-0 items-center gap-3;
+}
+
+.activity-log-row-metrics {
+  @apply text-right;
+}
+
+.activity-log-row-metrics strong {
+  @apply block text-sm font-semibold text-white;
+}
+
+.activity-log-row-metrics span {
+  @apply mt-1 block text-xs text-slate-500;
+}
+
+.activity-log-delete {
+  @apply inline-flex h-9 w-9 items-center justify-center rounded-full text-slate-500 transition duration-200 hover:bg-white/5 hover:text-rose-300 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.activity-log-empty-state {
+  @apply flex min-h-[16rem] flex-col items-center justify-center rounded-[1.25rem] border border-dashed border-white/8 bg-[#0c1430] px-6 text-center;
+}
+
+.activity-log-empty-icon {
+  @apply mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-300;
+}
+
+.activity-log-footer {
+  @apply mt-4 flex items-center justify-between gap-4 border-t border-white/6 px-2 pt-4 text-sm;
+}
+
+.activity-log-footer span {
+  @apply text-slate-400;
+}
+
+.activity-log-footer strong {
+  @apply text-base font-semibold text-blue-400;
+}
+
+.light .activity-log-shell {
+  @apply border-slate-200 bg-white shadow-[0_24px_70px_rgba(15,23,42,0.08)];
+}
+
+.light .activity-log-header {
+  @apply border-slate-200;
+}
+
+.light .activity-log-header-copy h1,
+.light .activity-log-card-header h2,
+.light .activity-log-form-header h3,
+.light .activity-log-summary-title h2,
+.light .activity-log-row-copy strong,
+.light .activity-log-row-metrics strong,
+.light .activity-log-empty-state h3 {
+  @apply text-slate-950;
+}
+
+.light .activity-log-header-copy p,
+.light .activity-log-total span,
+.light .activity-log-form-header p,
+.light .activity-log-summary-title p,
+.light .activity-log-row-copy span,
+.light .activity-log-row-metrics span,
+.light .activity-log-empty-state p,
+.light .activity-log-footer span {
+  @apply text-slate-500;
+}
+
+.light .activity-log-total strong,
+.light .activity-log-footer strong {
+  @apply text-blue-600;
+}
+
+.light .activity-log-card,
+.light .activity-log-form,
+.light .activity-log-summary-card {
+  @apply border-slate-200 bg-slate-50 shadow-[0_18px_48px_rgba(15,23,42,0.06)];
+}
+
+.light .activity-log-chip {
+  @apply border-slate-200 bg-white text-slate-600 hover:border-blue-300 hover:text-slate-900;
+}
+
+.light .activity-log-secondary-button {
+  @apply border-slate-200 bg-white text-slate-700 hover:bg-slate-100;
+}
+
+.light .activity-log-field span {
+  @apply text-slate-700;
+}
+
+.light .activity-log-input {
+  @apply border-slate-200 bg-white text-slate-900 placeholder:text-slate-400;
+}
+
+.light .activity-log-summary-badge {
+  @apply bg-blue-100 text-blue-600;
+}
+
+.light .activity-log-row {
+  @apply bg-white;
+}
+
+.light .activity-log-row-icon {
+  @apply bg-blue-50 text-blue-600;
+}
+
+.light .activity-log-delete {
+  @apply text-slate-400 hover:bg-slate-100 hover:text-rose-500;
+}
+
+.light .activity-log-empty-state {
+  @apply border-slate-200 bg-linear-to-br from-blue-50 to-cyan-50;
+}
+
+.light .activity-log-footer {
+  @apply border-slate-200;
+}
+
+@media (max-width: 1023px) {
+  .activity-log-shell {
+    @apply min-h-0;
+  }
+
+  .activity-log-header {
+    @apply flex-col items-start;
+  }
+
+  .activity-log-total {
+    @apply text-left;
+  }
+}
+
+.activity-entry-item {
+  @apply flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-800 rounded-xl transition-colors duration-200;
+}
+
+/* Onboarding Page */
+.onboarding-shell {
+  @apply relative min-h-screen overflow-hidden text-white;
+  background:
+    radial-gradient(circle at top left, rgba(16, 185, 129, 0.12), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.1), transparent 24%),
+    linear-gradient(180deg, #081128 0%, #060b22 100%);
+}
+
+.onboarding-shell-glow {
+  @apply pointer-events-none absolute rounded-full blur-3xl;
+}
+
+.onboarding-shell-glow-one {
+  @apply left-10 top-14 h-48 w-48 bg-emerald-500/10;
+}
+
+.onboarding-shell-glow-two {
+  @apply bottom-20 right-10 h-56 w-56 bg-cyan-500/10;
+}
+
+.onboarding-container {
+  @apply relative z-10 flex min-h-screen flex-col px-5 py-8 sm:px-8 sm:py-10 lg:px-14;
+}
+
+.onboarding-wrapper {
+  @apply w-full max-w-[34rem];
+}
+
+.onboarding-brand {
+  @apply flex items-center gap-3;
+}
+
+.onboarding-brand-icon {
+  @apply inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-300/20 bg-emerald-400 text-slate-950 shadow-[0_12px_30px_rgba(16,185,129,0.35)];
+}
+
+.onboarding-brand-copy h1 {
+  @apply text-[2rem] font-semibold tracking-tight text-white;
+}
+
+.onboarding-brand-copy p {
+  @apply mt-2 text-sm text-slate-400;
+}
+
+.onboarding-progress {
+  @apply mt-7 grid grid-cols-3 gap-2;
+}
+
+.onboarding-progress-segment {
+  @apply h-1.5 rounded-full bg-white/10 transition-all duration-200;
+}
+
+.onboarding-progress-segment.is-active {
+  @apply bg-emerald-400;
+}
+
+.onboarding-step-counter {
+  @apply mt-3 text-sm text-slate-400;
+}
+
+.onboarding-step-card {
+  @apply mt-8 flex items-start gap-4;
+}
+
+.onboarding-step-icon {
+  @apply inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-emerald-300/10 bg-emerald-400/5 text-emerald-300 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)];
+}
+
+.onboarding-step-card h2 {
+  @apply text-[1.95rem] font-semibold tracking-tight text-white;
+}
+
+.onboarding-step-card p {
+  @apply mt-1 text-base text-slate-400;
+}
+
+.onboarding-form-grid {
+  @apply mt-10 space-y-6;
+}
+
+.onboarding-field {
+  @apply block;
+}
+
+.onboarding-field-label {
+  @apply mb-3 block text-sm font-medium text-slate-200;
+}
+
+.onboarding-required {
+  @apply text-rose-400;
+}
+
+.onboarding-input {
+  @apply w-full rounded-2xl border border-white/8 bg-slate-800/80 px-5 py-4 text-base text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.02)] outline-none transition duration-200 placeholder:text-slate-500 focus:border-emerald-400/70 focus:bg-slate-800 focus:ring-2 focus:ring-emerald-400/15;
+}
+
+.onboarding-input::-webkit-outer-spin-button,
+.onboarding-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.onboarding-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.onboarding-goal-list {
+  @apply space-y-3;
+}
+
+.onboarding-goal-option {
+  @apply w-full rounded-2xl border border-white/8 bg-slate-800/85 px-5 py-4 text-left text-base font-medium text-slate-100 transition duration-200 hover:border-emerald-300/40 hover:bg-slate-800;
+}
+
+.onboarding-goal-option.is-active {
+  @apply border-emerald-400 bg-slate-800 shadow-[0_0_0_3px_rgba(52,211,153,0.14)];
+}
+
+.onboarding-divider {
+  @apply my-5 h-px bg-white/10;
+}
+
+.onboarding-targets {
+  @apply space-y-5;
+}
+
+.onboarding-targets h3 {
+  @apply text-2xl font-semibold tracking-tight text-white;
+}
+
+.onboarding-target-slider {
+  @apply space-y-3;
+}
+
+.onboarding-target-header {
+  @apply flex items-center justify-between gap-3;
+}
+
+.onboarding-target-label {
+  @apply flex items-center gap-2 text-sm font-medium text-slate-200;
+}
+
+.onboarding-help-icon {
+  @apply text-slate-500 transition hover:text-emerald-300;
+}
+
+.onboarding-target-value {
+  @apply text-sm font-semibold text-emerald-300;
+}
+
+.onboarding-range {
+  @apply relative h-2 rounded-full bg-slate-700/90;
+}
+
+.onboarding-range-fill {
+  @apply absolute left-0 top-0 h-full rounded-full bg-emerald-400;
+}
+
+.onboarding-range-input {
+  @apply absolute z-10 h-full w-full cursor-pointer opacity-0;
+}
+
+.onboarding-range-thumb {
+  @apply absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full border-2 border-emerald-300 bg-white shadow-[0_0_0_3px_rgba(16,185,129,0.18)];
+}
+
+.onboarding-error {
+  @apply mt-6 max-w-[34rem] rounded-2xl border border-rose-400/25 bg-rose-500/10 px-4 py-3 text-sm text-rose-200;
+}
+
+.onboarding-actions {
+  @apply mt-auto flex w-full flex-col-reverse gap-3 pt-12 sm:flex-row sm:justify-end;
+}
+
+.onboarding-secondary-button,
+.onboarding-primary-button {
+  @apply inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-4 text-sm font-semibold transition duration-200 disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.onboarding-secondary-button {
+  @apply border border-white/8 bg-slate-800 text-slate-100 hover:bg-slate-700;
+}
+
+.onboarding-primary-button {
+  @apply bg-emerald-400 text-slate-950 shadow-[0_16px_40px_rgba(16,185,129,0.28)] hover:bg-emerald-300;
+}
+
+@media (min-width: 1024px) {
+  .onboarding-container {
+    @apply px-16 py-12;
+  }
+
+  .onboarding-brand-copy h1 {
+    @apply text-[2.3rem];
+  }
+
+  .onboarding-step-card h2 {
+    @apply text-[2.15rem];
+  }
+}
+
+@media (max-width: 640px) {
+  .onboarding-step-card h2 {
+    @apply text-2xl;
+  }
+
+  .onboarding-targets h3 {
+    @apply text-xl;
+  }
+
+  .onboarding-primary-button,
+  .onboarding-secondary-button {
+    @apply w-full;
+  }
+}
